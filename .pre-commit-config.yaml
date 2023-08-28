@@ -1,4 +1,4 @@
-exclude: '^docs/|/migrations/|/.idea/|/node_modules/|/venv/|/env/|/build/|/dist/|/\.git/|/\.hg/|/\.mypy_cache/|/\.tox/|/\.venv/|/\.svn/|/\.cache/|/\.pytest_cache/|/\.vscode/|/\.serverless/|/\.serverless_plugins/|/\.serverless_plugins/|/\.ser'
+exclude: '.pre-commit-config.yaml|.gitignore|^docs/|/migrations/|/.idea/|/node_modules/|/venv/|/env/|/build/|/dist/|/\.git/|/\.hg/|/\.mypy_cache/|/\.tox/|/\.venv/|/\.svn/|/\.cache/|/\.pytest_cache/|/\.vscode/|/\.serverless/|/\.serverless_plugins/|/\.serverless_plugins/|/\.ser'
 default_stages: [commit]
 
 repos:

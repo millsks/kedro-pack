@@ -16,6 +16,7 @@ plugins = ["django_coverage_plugin"]
 
 # ==== black ====
 [tool.black]
+force-exclude = '''.idea/*|pyproject.toml|.pre-commit-config.yaml|.gitignore|^docs/|/migrations/|/.idea/|/node_modules/|/venv/|/env/|/build/|/dist/|/\.git/|/\.hg/|/\.mypy_cache/|/\.tox/|/\.venv/|/\.svn/|/\.cache/|/\.pytest_cache/|/\.vscode/|/\.serverless/|/\.serverless_plugins/|/\.serverless_plugins/|/\.ser'''
 line-length = 120
 target-version = ['py39']
 
@@ -39,7 +40,7 @@ max-complexity = 15
 max-cognitive-complexity = 15
 inline-quotes = "double"
 per-file-ignores = "__init__.py:F401"
-exclude = ["README*","pyproject.toml",".idea",".tox",".git","*/migrations/*","*/static/CACHE/*","docs","node_modules","venv",".venv","tests","node"]
+exclude = ["README*","pyproject.toml",".idea/*",".tox",".git","*/migrations/*","*/static/CACHE/*","docs","node_modules","venv",".venv","tests","node"]
 
 
 # ==== mypy ====
