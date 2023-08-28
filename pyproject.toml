@@ -1,3 +1,23 @@
+[project]
+name = "kedro-pack"
+version = "1.0.2"
+authors = [
+  { name="Kevin Mills", email="millsks@gmail.com" },
+]
+description = "A generic recipe to install the kedro framework and additional kedro plugins."
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/millsks/kedro-pack"
+"Bug Tracker" = "https://github.com/millsks/kedro-pack/issues"
+
+
 # ==== pytest ====
 [tool.pytest.ini_options]
 minversion = "7.0"
@@ -113,7 +133,7 @@ exclude_dirs = ["tests", "node"]
 
 [tool.poetry]
 name = "kedro-pack"
-version = "1.0.1"
+version = "1.0.2"
 description = "A generic recipe to install the kedro framework and additional kedro plugins."
 authors = ["Kevin Mills <millsks@gmail.com>"]
 license = "Apache-2.0"
