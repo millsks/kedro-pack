@@ -1,3 +1,123 @@
+# ==== pytest ====
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "--ds=config.settings.test --reuse-db"
+python_files = [
+    "tests.py",
+    "test_*.py",
+]
+
+# ==== Coverage ====
+[tool.coverage.run]
+include = ["django_kedro/**"]
+omit = ["*/migrations/*", "*/tests/*"]
+plugins = ["django_coverage_plugin"]
+
+
+# ==== black ====
+[tool.black]
+line-length = 120
+target-version = ['py39']
+
+
+# ==== isort ====
+[tool.isort]
+profile = "black"
+line_length = 120
+known_first_party = [
+    "django_kedro",
+    "config",
+]
+skip = ["venv/"]
+skip_glob = ["**/migrations/*.py"]
+
+
+# ==== flake8 ====
+[tool.flake8]
+max-line-length = 120
+max-complexity = 15
+max-cognitive-complexity = 15
+inline-quotes = "double"
+per-file-ignores = "__init__.py:F401"
+exclude = ["README*","pyproject.toml",".idea",".tox",".git","*/migrations/*","*/static/CACHE/*","docs","node_modules","venv",".venv","tests","node"]
+
+
+# ==== mypy ====
+[tool.mypy]
+python_version = "3.10"
+check_untyped_defs = true
+ignore_missing_imports = true
+warn_unused_ignores = true
+warn_redundant_casts = true
+warn_unused_configs = true
+exclude = [
+    "tests",
+    "node",
+]
+
+[[tool.mypy.overrides]]
+ignore_errors = true
+
+
+# ==== PyLint ====
+[tool.pylint.MASTER]
+ignore = [
+    "CVS",
+    ".svn",
+    ".hg",
+    ".git",
+    "venv",
+    ".venv",
+    "env",
+    "node_modules",
+    "migrations",
+    "static",
+    "templates",
+    "docs",
+    "build",
+    "dist",
+    "tests",
+    "test",
+    "setup.py",
+    "setup.cfg",
+    "requirements.txt",
+]
+
+[tool.pylint.FORMAT]
+max-line-length = 120
+
+[tool.pylint."MESSAGES CONTROL"]
+disable = [
+    "W0511",  # "TODO" comments
+    "W0221",  # Arguments number differs from overridden method
+    "C0103",  # Variable name doesn't conform to snake_case convention
+    "I0001",  # Used to inform that a built-in module has not been checked using the raw checkers.
+    "I0010",  # Used when an inline option is either badly formatted or can't be used inside modules.
+    "I0011",  # Used when an inline option disables a message or a messages category.
+    "I0013",  # Used to inform that the file will not be checked.
+    "I0020",  # A message was triggered on a line, but suppressed explicitly by a disable= comment in the file. This message is not generated for messages that are ignored due to configuration settings.
+    "I0021",  # Reported when a message is explicitly disabled for a line or a block of code, but never triggered.
+    "I0022",  # Some inline pylint options have been renamed or reworked, only the most recent form should be used.
+    "I0023",  # Used when a message is enabled or disabled by id.
+    "W1203",  # Use % formatting in logging functions and pass the % parameters as arguments
+]
+
+[tool.pylint.DESIGN]
+max-parents = 13
+
+[tool.pylint.TYPECHECK]
+generated-members = [
+    "REQUEST",
+    "acl_users",
+    "aq_parent",
+    "[a-zA-Z]+_set{1,2}",
+    "save",
+    "delete",
+]
+
+[tool.bandit]
+exclude_dirs = ["tests", "node"]
+
 [tool.poetry]
 name = "kedro-pack"
 version = "1.0.0"
@@ -5,16 +125,18 @@ description = "A generic recipe to install the kedro framework and additional ke
 authors = ["Kevin Mills <millsks@gmail.com>"]
 license = "Apache-2.0"
 readme = "README.md"
-packages = [{include = "kedro_pack"}]
+#packages = [{include = "src/kedro_pack"}]
 
 [tool.poetry.dependencies]
 python = ">=3.10,<3.11"
+pip = ">=23.2.1"
 kedro = {version = ">=0.18.12,<0.19.0", python = ">=3.10,<3.11"}
 kedro-datasets = {version = ">=1.6.0,<2.0.0", python = ">=3.10,<3.11"}
 kedro-airflow = {version = ">=0.6.0,<1.0.0", python = ">=3.10,<3.11"}
 kedro-mlflow = {version = ">=0.11.9,<1.0.0", python = ">=3.10,<3.11"}
 kedro-viz = {version = ">=6.4.0,<7.0.0", python = ">=3.10,<3.11"}
-kedro-vertexai = {version = ">=0.9.1,<1.0.0", python = ">=3.10,<3.11"}
+kedro-light = {version = ">=2023.3.13", python = ">=3.10,<3.11"}
+#kedro-vertexai = {version = ">=0.9.1,<1.0.0", python = ">=3.10,<3.11"}
 
 [tool.poetry.group.dev.dependencies]
 bandit  = ">=1.7.5,<2.0.0"
