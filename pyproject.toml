@@ -9,28 +9,20 @@ python_files = [
 
 # ==== Coverage ====
 [tool.coverage.run]
-include = ["django_kedro/**"]
-omit = ["*/migrations/*", "*/tests/*"]
-plugins = ["django_coverage_plugin"]
+include = ["src/**"]
 
 
 # ==== black ====
 [tool.black]
-force-exclude = '''.idea/*|pyproject.toml|.pre-commit-config.yaml|.gitignore|^docs/|/migrations/|/.idea/|/node_modules/|/venv/|/env/|/build/|/dist/|/\.git/|/\.hg/|/\.mypy_cache/|/\.tox/|/\.venv/|/\.svn/|/\.cache/|/\.pytest_cache/|/\.vscode/|/\.serverless/|/\.serverless_plugins/|/\.serverless_plugins/|/\.ser'''
+force-exclude = '''.idea/*|poetry.lock|pyproject.toml|.pre-commit-config.yaml|.gitignore|^docs/|/migrations/|/.idea/|/node_modules/|/venv/|/env/|/build/|/dist/|/\.git/|/\.hg/|/\.mypy_cache/|/\.tox/|/\.venv/|/\.svn/|/\.cache/|/\.pytest_cache/|/\.vscode/|/\.serverless/|/\.serverless_plugins/|/\.serverless_plugins/|/\.ser'''
 line-length = 120
-target-version = ['py39']
+target-version = ['py310']
 
 
 # ==== isort ====
 [tool.isort]
 profile = "black"
 line_length = 120
-known_first_party = [
-    "django_kedro",
-    "config",
-]
-skip = ["venv/"]
-skip_glob = ["**/migrations/*.py"]
 
 
 # ==== flake8 ====
@@ -40,7 +32,7 @@ max-complexity = 15
 max-cognitive-complexity = 15
 inline-quotes = "double"
 per-file-ignores = "__init__.py:F401"
-exclude = ["README*","pyproject.toml",".idea/*",".tox",".git","*/migrations/*","*/static/CACHE/*","docs","node_modules","venv",".venv","tests","node"]
+exclude = ["README*","poetry.lock","pyproject.toml",".idea/*",".tox",".git","*/migrations/*","*/static/CACHE/*","docs","node_modules","venv",".venv","tests","node"]
 
 
 # ==== mypy ====
@@ -166,7 +158,6 @@ pre-commit = ">=3.3.3,<4.0.0"
 pytest = ">=7.4.0,<8.0.0"
 pytest-cookies = ">=0.7.0,<1.0.0"
 pytest-cov = ">=4.1.0,<5.0.0"
-pytest-django = ">=4.5.2,<5.0.0"
 pytest-env = ">=1.0.1,<2.0.0"
 pytest-html = ">=3.2.0,<4.0.0"
 pytest-instafail = ">=0.5.0,<1.0.0"
