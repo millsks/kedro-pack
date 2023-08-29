@@ -27,7 +27,7 @@ jobs:
         --wheel
         --outdir dist/
         .
-    # Actually publish to PyPI/TestPyPI
+#    # Actually publish to PyPI/TestPyPI
 #    - name: Publish distribution to Test PyPI
 #      uses: pypa/gh-action-pypi-publish@release/v1
 #      with:

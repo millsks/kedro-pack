@@ -1,6 +1,6 @@
 [project]
 name = "kedro-pack"
-version = "1.0.3"
+version = "0.18.12"
 authors = [
   { name="Kevin Mills", email="millsks@gmail.com" },
 ]
@@ -34,7 +34,7 @@ include = ["src/**"]
 
 # ==== black ====
 [tool.black]
-force-exclude = '''.github|.gitkeep|.idea/*|poetry.lock|pyproject.toml|.pre-commit-config.yaml|.gitignore|^docs/|/migrations/|/.idea/|/node_modules/|/venv/|/env/|/build/|/dist/|/\.git/|/\.hg/|/\.mypy_cache/|/\.tox/|/\.venv/|/\.svn/|/\.cache/|/\.pytest_cache/|/\.vscode/|/\.serverless/|/\.serverless_plugins/|/\.serverless_plugins/|/\.ser'''
+force-exclude = '''recipe|.github|.gitkeep|.idea/*|poetry.lock|pyproject.toml|.pre-commit-config.yaml|.gitignore|^docs/|/migrations/|/.idea/|/node_modules/|/venv/|/env/|/build/|/dist/|/\.git/|/\.hg/|/\.mypy_cache/|/\.tox/|/\.venv/|/\.svn/|/\.cache/|/\.pytest_cache/|/\.vscode/|/\.serverless/|/\.serverless_plugins/|/\.serverless_plugins/|/\.ser'''
 line-length = 120
 target-version = ['py310']
 
@@ -52,7 +52,7 @@ max-complexity = 15
 max-cognitive-complexity = 15
 inline-quotes = "double"
 per-file-ignores = "__init__.py:F401"
-exclude = [".github/**","**/.gitkeep","README*","poetry.lock","pyproject.toml",".idea/*",".tox",".git","*/migrations/*","*/static/CACHE/*","docs","node_modules","venv",".venv","tests","node"]
+exclude = ["recipe/**",".github/**","**/.gitkeep","README*","poetry.lock","pyproject.toml",".idea/*",".tox",".git","*/migrations/*","*/static/CACHE/*","docs","node_modules","venv",".venv","tests","node"]
 
 
 # ==== mypy ====
@@ -133,23 +133,21 @@ exclude_dirs = ["tests", "node"]
 
 [tool.poetry]
 name = "kedro-pack"
-version = "1.0.3"
+version = "0.18.12"
 description = "A generic recipe to install the kedro framework and additional kedro plugins."
 authors = ["Kevin Mills <millsks@gmail.com>"]
 license = "Apache-2.0"
 readme = "README.md"
-#packages = [{include = "src/kedro_pack"}]
 
 [tool.poetry.dependencies]
 python = ">=3.10,<3.11"
 pip = ">=23.2.1"
-kedro = {version = ">=0.18.12,<0.19.0", python = ">=3.10,<3.11"}
-kedro-datasets = {version = ">=1.6.0,<2.0.0", python = ">=3.10,<3.11"}
-kedro-airflow = {version = ">=0.6.0,<1.0.0", python = ">=3.10,<3.11"}
-kedro-mlflow = {version = ">=0.11.9,<1.0.0", python = ">=3.10,<3.11"}
-kedro-viz = {version = ">=6.4.0,<7.0.0", python = ">=3.10,<3.11"}
-kedro-light = {version = ">=2023.3.13", python = ">=3.10,<3.11"}
-#kedro-vertexai = {version = ">=0.9.1,<1.0.0", python = ">=3.10,<3.11"}
+kedro = {version = "==0.18.12", python = ">=3.10,<3.11"}
+kedro-datasets = {version = "==1.6.0", python = ">=3.10,<3.11"}
+kedro-airflow = {version = "==0.6.0", python = ">=3.10,<3.11"}
+kedro-mlflow = {version = "==0.11.9", python = ">=3.10,<3.11"}
+kedro-viz = {version = "==6.4.0", python = ">=3.10,<3.11"}
+kedro-light = {version = "==2023.3.13", python = ">=3.10,<3.11"}
 
 [tool.poetry.group.dev.dependencies]
 bandit  = ">=1.7.5,<2.0.0"

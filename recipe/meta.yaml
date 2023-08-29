@@ -1,5 +1,6 @@
 {% set name = "kedro-pack" %}
-{% set version = "1.0.0" %}
+{% set version = "0.18.12" %}
+{% set module_name = "kedro_pack" %}
 
 package:
   name: {{ name|lower }}
@@ -9,6 +10,15 @@ build:
   noarch: python
   number: 0
 
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ module_name }}-{{ version }}.tar.gz
+  sha256: be32b110d9dda42beb9830a4ec10c94736333c595fbcb71d498bd7b38ffb1c46
+
+build:
+  number: 0
+  noarch: python
+  script: {{ PYTHON }} -m pip install . -vv
+
 requirements:
   host:
     - python >=3.10,<3.11
@@ -16,12 +26,12 @@ requirements:
     - pip
   run:
     - python >=3.10,<3.11
-    - kedro >=0.18.12,<0.19.0  #
-    - kedro-datasets >=1.6.0,<2.0.0  #
-    - kedro-airflow >=0.6.0,<1.0.0  #
-    - kedro-mlflow >=0.11.9,<1.0.0  #
-    - kedro-viz >=6.4.0,<7.0.0  #
-    - kedro-light >=2023.3.13  #
+    - kedro ==0.18.12
+    - kedro-datasets ==1.6.0
+    - kedro-airflow ==0.6.0
+    - kedro-mlflow ==0.11.9
+    - kedro-viz ==6.4.0
+    - kedro-light ==2023.3.13
 
 test:
   imports:
@@ -30,15 +40,20 @@ test:
     - kedro_airflow
     - kedro_mlflow
     - kedro_viz
+    - kedro_light
   requires:
     - pip
 
 about:
-  home: https://github.com/ResponsibleAIML/kedro-pack
-  summary: Installation of the kedro framework and desired plugins
+  home: https://github.com/millsks/kedro-pack
+  summary: A generic recipe to install the kedro framework and additional kedro plugins.
   license: Apache-2.0
   license_file: LICENSE
 
 extra:
   recipe-maintainers:
+    - elanqo
+    - cshaley
+    - zaigner
+    - rxm7706
     - millsks
