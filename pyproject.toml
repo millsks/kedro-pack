@@ -1,6 +1,6 @@
 [project]
 name = "kedro-pack"
-version = "1.0.2"
+version = "1.0.3"
 authors = [
   { name="Kevin Mills", email="millsks@gmail.com" },
 ]
@@ -133,7 +133,7 @@ exclude_dirs = ["tests", "node"]
 
 [tool.poetry]
 name = "kedro-pack"
-version = "1.0.2"
+version = "1.0.3"
 description = "A generic recipe to install the kedro framework and additional kedro plugins."
 authors = ["Kevin Mills <millsks@gmail.com>"]
 license = "Apache-2.0"
